@@ -1,5 +1,7 @@
 package sla.org.tryagain;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -16,11 +18,20 @@ public class Controller {
         myEditText = editText;
         myButton = button;
 
-        myEditText.setOnKeyListener(new View.OnKeyListener() {
+        myEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
                 myTextView.setText(myEditText.getText());
-                return false;
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
             }
         });
 
