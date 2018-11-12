@@ -2,7 +2,6 @@ package sla.org.tryagain;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,7 +25,7 @@ public class Controller {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                myTextView.setText(myEditText.getText());
+                updateText();
             }
 
             @Override
@@ -38,13 +37,19 @@ public class Controller {
         myButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateWhenButtonPressed();
+                clearBothTexts();
             }
         });
     }
 
-    void updateWhenButtonPressed() {
+    void updateText() {
+        myTextView.setText(myEditText.getText());
+    }
+
+    void clearBothTexts() {
+        myEditText.setText("");
         myTextView.setText("");
     }
+
 
 }
